@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
@@ -12,9 +14,11 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-      "@base/*": [
-        "src/*"
-      ]
+      "@base/*": ["src/*"],
+      "@common/*": ["src/commons/*"],
+      "@models/*": ["src/models/*"],
+      "@modules/*": ["src/modules/*"],
+      "@middleware/*": ["src/middleware/*"]
     }
   }
 }
