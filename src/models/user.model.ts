@@ -1,12 +1,22 @@
 import { model, Schema } from 'mongoose';
 
 const userSchema = new Schema({
-  firstname: {
+  firstName: {
     type: String,
     required: true,
   },
-  lastname: String,
-  age: Number,
+  lastName: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
 });
 
-export default model('User', userSchema);
+export const UserModel = model('User', userSchema);
+
+
+
+
