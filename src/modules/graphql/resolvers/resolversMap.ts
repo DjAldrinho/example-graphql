@@ -1,8 +1,10 @@
-import { Querys } from './query';
-import { Mutations } from './mutation';
+import { query } from './querys/query';
+import { mutation } from './mutations/mutation';
+import { types } from './types/types';
 
 
 export const resolvers = {
-  ...Querys,
-  ...Mutations,
+  ...query,
+  ...types,
+  ...mutation,
 };

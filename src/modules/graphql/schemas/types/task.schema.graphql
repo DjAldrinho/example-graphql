@@ -1,0 +1,9 @@
+"Schema for Task"
+type Task {
+    _id: ID
+    title: String!
+    description: String!
+    order: Int!
+    "Author of Task"
+    user: User!
+}
