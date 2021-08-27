@@ -1,18 +1,19 @@
-import { tasks } from '../../../mocks/tasks.mock';
 import { UserModel } from '../../../models/user.model';
+import { tasks } from '../../../mocks/tasks.mock';
 
 
 export const Mutations = {
+  Mutation: {
+    createTask(__: void, { task }: any): any {
+      task._id = tasks.length;
+      tasks.push(task);
+      return task;
+    },
 
- /* createTask(__: void, {input}): any {
-    input._id = tasks.length;
-    tasks.push(input);
-    return input;
-  },*/
-
-  /*async createUser(__: void, input: any) {
-    const user = new UserModel(input);
-    await user.save();
-    return user;
-  },*/
+    async createUser(__: void, { user }: any) {
+      const newUser = new UserModel(user);
+      await newUser.save();
+      return newUser;
+    },
+  },
 };

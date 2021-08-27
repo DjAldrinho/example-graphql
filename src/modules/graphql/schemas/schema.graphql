@@ -20,8 +20,8 @@ type User{
 }
 
 type Mutation {
-    createTask(input: TaskInput): Task,
-    createUser(input: UserInput): User
+    createTask(task: TaskInput!): Task,
+    createUser(user: UserInput!): User
 }
 
 input TaskInput {

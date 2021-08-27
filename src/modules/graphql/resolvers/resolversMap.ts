@@ -4,5 +4,5 @@ import { Mutations } from './mutation';
 
 export const resolvers = {
   ...Querys,
-  //...Mutations,
+  ...Mutations,
 };
