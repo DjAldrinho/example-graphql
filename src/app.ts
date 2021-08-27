@@ -1,30 +1,30 @@
 import express from 'express';
-import { errorHandler } from '@common/errors-handler/error-handler';
-import { routes } from '@common/routes';
 import { graphqlHTTP } from 'express-graphql';
-import { schema } from '@modules/graphql/schema';
-import { connect } from '@base/config/database';
+import { connect } from './config/database';
+import { errorHandler } from './commons/errors-handler/error-handler';
+import { appRoutes } from './modules/routes';
 
 
 const app = express();
-const port = 3000; // default port to listen
+const port = 3000;
 
 //Connecting to DB
-connect();
+connect()
+  .then(r => console.log('>>> DB is Connected')).catch((error)  =>  console.log(error));
 
-app.use('/graphql', graphqlHTTP({
+/*app.use('/graphql', graphqlHTTP({
   schema: schema,
   graphiql: true,
-}));
+}));*/
 
-app.use(errorHandler); // registration of handler
+//Routes
+appRoutes(app);
 
-routes.forEach((route) => {
-  const { method, path, middleware, handler } = route;
-  app[method](path, ...middleware, handler);
-});
+//Handlers
+app.use(errorHandler);
 
-// start the express server
+
+// Start the express server
 app.listen(port, () => {
   console.log(`Local server started at http://localhost:${port}`);
 });

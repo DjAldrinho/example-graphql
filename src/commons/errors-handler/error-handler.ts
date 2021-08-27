@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { ErrorCode } from '@common/errors-handler/error-codes';
-import { ErrorModel } from '@models/error.model';
-import { ErrorException } from '@common/exceptions/error-exception-handler';
+import { ErrorException } from '../exceptions/error-exception-handler';
+import { ErrorCode } from './error-codes';
+import { ErrorModel } from '../../models/error.model';
+
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log('Error handling middleware called.');

@@ -1,7 +1,8 @@
-import { ErrorCode } from '@common/errors-handler/error-codes';
+import { ErrorCode } from '../errors-handler/error-codes';
+
 
 export class ErrorException extends Error {
-  public status: number = null;
+  public status: number;
   public metaData: any = null;
 
   constructor(code: string = ErrorCode.UnknownError, metaData: any = null) {

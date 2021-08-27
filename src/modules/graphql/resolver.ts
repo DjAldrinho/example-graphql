@@ -1,12 +1,9 @@
-import { tasks } from '@modules/graphql/tasks.example';
-import { UserModel } from '@models/user.model';
-
-export const resolvers = {
+/*export const resolvers = {
   Query: {
     hello: () => {
       return 'Hello world with GraphQL!';
     },
-    greet(root, args) {
+    greet(root: any, args: { name: any; }) {
       return `Hello ${args.name}`;
     },
     tasks: () => {
@@ -17,15 +14,16 @@ export const resolvers = {
     },
   },
   Mutation: {
-    createTask(_, { input }) {
+    createTask(_, input: any) {
       input._id = tasks.length;
       tasks.push(input);
       return input;
     },
-    async createUser(_, { input }) {
+    async createUser(_, input: any) {
       const user = new UserModel(input);
       await user.save();
       return user;
     },
   },
 };
+ */
