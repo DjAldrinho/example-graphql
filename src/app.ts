@@ -3,6 +3,8 @@ import { graphqlHTTP } from 'express-graphql';
 import { connect } from './config/database';
 import { errorHandler } from './commons/errors-handler/error-handler';
 import { appRoutes } from './modules/routes';
+import compression from 'compression';
+import { schema } from './modules/graphql/schemas/index.';
 
 
 const app = express();
@@ -10,18 +12,21 @@ const port = 3000;
 
 //Connecting to DB
 connect()
-  .then(r => console.log('>>> DB is Connected')).catch((error)  =>  console.log(error));
+  .then(r => console.log('>>> DB is Connected')).catch((error) => console.log(error));
 
-/*app.use('/graphql', graphqlHTTP({
+app.use('/graphql', graphqlHTTP({
   schema: schema,
   graphiql: true,
-}));*/
+}));
 
 //Routes
 appRoutes(app);
 
 //Handlers
 app.use(errorHandler);
+
+//Compression
+app.use(compression());
 
 
 // Start the express server
