@@ -11,3 +11,14 @@ export async function getUserByID(userID: string) {
     throw err;
   }
 }
+
+export async function createUser(user: any) {
+  try {
+    const newUser = new UserModel(user);
+    await newUser.save();
+    return newUser;
+  } catch (err) {
+    throw err;
+  }
+}
+

@@ -1,9 +1,7 @@
-import { UserModel } from '../../../../models/user.model';
+import { createUser } from '../../../../services/user.service';
 
 export const userMutations = {
   async createUser(__: void, { user }: any) {
-    const newUser = new UserModel(user);
-    await newUser.save();
-    return newUser;
+    return await createUser(user);
   },
 };
